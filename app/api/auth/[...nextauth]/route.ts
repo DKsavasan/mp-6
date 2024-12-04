@@ -1,4 +1,4 @@
-import NextAuth, { Session, User } from "next-auth";
+import NextAuth, { NextAuthOptions, Session, User } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import clientPromise from "@/lib/mongodb";
 
@@ -9,7 +9,7 @@ type AppUser = {
   image?: string | null;
 };
 
-const authOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID ?? "",
@@ -63,5 +63,5 @@ const authOptions = {
   },
 };
 
-export const handler = NextAuth(authOptions);
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
