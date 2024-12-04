@@ -9,7 +9,7 @@ type AppUser = {
   image?: string | null;
 };
 
-export const authOptions = {
+const authOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID ?? "",
